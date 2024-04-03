@@ -21,10 +21,13 @@ while game_is_on:
     time.sleep(0.1)
     screen.update()
     car.move()
-    turtle.finish_line()
 
     for c in car.all_cars:
-        if c.distance(turtle) < 28:
+        if c.distance(turtle) < 25:
             game_is_on = False
+
+    if turtle.finish_line():
+        turtle.initial_pos()
+        car.increase_speed()
 
 screen.exitonclick()

@@ -22,4 +22,6 @@ class Player(Turtle):
 
     def finish_line(self):
         if self.ycor() == FINISH_LINE_Y:
-            self.initial_pos()
+            return True
+        else:
+            return False

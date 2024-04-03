@@ -9,6 +9,7 @@ MOVE_INCREMENT = 10
 class CarManager():
     def __init__(self) -> None:
         self.all_cars = []
+        self.speed = STARTING_MOVE_DISTANCE
         for _ in range(30):
             self.create_car()
 
@@ -17,11 +18,14 @@ class CarManager():
         c.color(random.choice(COLORS))
         c.shapesize(1, 2)
         c.penup()
-        c.goto(random.randint(300, 1600), random.randint(-240, 240))
+        c.goto(random.randint(300, 1500), random.randint(-240, 240))
         self.all_cars.append(c)
 
     def move(self):
         for car in self.all_cars:
-            car.bk(STARTING_MOVE_DISTANCE)
+            car.bk(self.speed)
             if car.xcor() < -310:
-                car.goto(random.randint(300, 1600), random.randint(-240, 240))
+                car.goto(random.randint(300, 1500), random.randint(-240, 240))
+
+    def increase_speed(self):
+        self.speed += MOVE_INCREMENT
