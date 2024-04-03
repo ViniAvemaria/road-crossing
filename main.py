@@ -23,4 +23,8 @@ while game_is_on:
     car.move()
     turtle.finish_line()
 
+    for c in car.all_cars:
+        if c.distance(turtle) < 28:
+            game_is_on = False
+
 screen.exitonclick()
